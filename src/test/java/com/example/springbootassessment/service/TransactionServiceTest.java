@@ -40,7 +40,6 @@ public class TransactionServiceTest {
         assertEquals(2, transactions.size());
     }
 
-    // Write similar tests for other methods...
 
     @Test
     void testGetTransactionById_NotFound() {
@@ -50,6 +49,5 @@ public class TransactionServiceTest {
         assertThrows(TransactionNotFoundException.class, () -> transactionService.getTransactionById(id));
     }
 
-    // Write more tests for other scenarios...
 
 }
