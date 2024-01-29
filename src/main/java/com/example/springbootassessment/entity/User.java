@@ -4,11 +4,13 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 
+import javax.naming.Name;
 import java.util.List;
 
 @Entity
 @Data
-public class User {
+@Table(name = "user")
+public class User extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -17,5 +19,4 @@ public class User {
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Transaction> transactions;
-
 }

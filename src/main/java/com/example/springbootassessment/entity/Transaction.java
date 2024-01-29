@@ -1,37 +1,24 @@
 package com.example.springbootassessment.entity;
 
+import com.example.springbootassessment.entity.dtos.reqDtos.TransactionType;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import lombok.Data;
-import org.springframework.data.annotation.*;
-import org.springframework.data.annotation.Version;
-
-import java.time.LocalDateTime;
-
 @Entity
 @Data
-public class Transaction {
+@Table(name = "transaction")
+public class Transaction extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "transaction_id")
+	private Long transactionId;
+
+	@Column(name = "transaction_type")
+	@Enumerated(EnumType.STRING)
+	private TransactionType type;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-
-	@CreatedBy
-	private String createdBy;
-
-	@CreatedDate
-	private LocalDateTime createdDate;
-
-	@LastModifiedBy
-	private String lastModifiedBy;
-
-	@LastModifiedDate
-	private LocalDateTime lastModifiedDate;
-
-	@Version
-	private int version;
 }
 
